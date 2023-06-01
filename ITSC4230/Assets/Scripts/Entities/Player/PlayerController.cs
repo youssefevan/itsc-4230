@@ -8,6 +8,9 @@ public class PlayerController : MonoBehaviour
     Vector2 moveInput;
     Rigidbody2D rb;
 
+    [SerializeField]
+    private float moveSpeed = 50.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,16 +18,12 @@ public class PlayerController : MonoBehaviour
     }
 
     private void FixedUpdate() {
-        if(moveInput != Vector2.zero) {
-            int count = rb.Cast {
-                
-            }
-        }
+        rb.velocity = moveInput.normalized * moveSpeed * Time.deltaTime;
     }
     
 
-    void OnMove(InputValue moveValue) {
-        moveInput = moveValue.Get<Vector2>();
+    private void OnMove(InputValue inputValue) {
+        moveInput = inputValue.Get<Vector2>();
     }
 
 }

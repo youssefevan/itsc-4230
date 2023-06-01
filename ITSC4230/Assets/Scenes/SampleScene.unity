@@ -222,15 +222,15 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
+    x: 0.0017857143
     y: 0
-    width: 1
+    width: 0.99642855
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 1
+  orthographic size: 1.05
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -275,8 +275,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ComponentVersion: 1
   m_AssetsPPU: 100
-  m_RefResolutionX: 320
-  m_RefResolutionY: 180
+  m_RefResolutionX: 256
+  m_RefResolutionY: 144
   m_CropFrame: 0
   m_GridSnapping: 2
   m_FilterMode: 0
@@ -451,6 +451,14 @@ PrefabInstance:
     - target: {fileID: 3863966295509314350, guid: 0bf86adaa5e4a604ca0dc5711b6bc8d4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7559109469821635087, guid: 0bf86adaa5e4a604ca0dc5711b6bc8d4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 745a370591c01224ebbbc0733836a615, type: 3}
+    - target: {fileID: 7559109469821635087, guid: 0bf86adaa5e4a604ca0dc5711b6bc8d4, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
