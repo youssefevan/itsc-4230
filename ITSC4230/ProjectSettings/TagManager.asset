@@ -41,3 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Floors
+    uniqueID: 1270702967
+    locked: 0
+  - name: Entities
+    uniqueID: 2537144297
+    locked: 0
