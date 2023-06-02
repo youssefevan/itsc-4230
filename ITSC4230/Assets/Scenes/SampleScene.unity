@@ -1489,7 +1489,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1270702967
   m_SortingLayer: 1
-  m_SortingOrder: -1
+  m_SortingOrder: -2
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -7546,14 +7546,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1743457317931911750, guid: 0bf86adaa5e4a604ca0dc5711b6bc8d4, type: 3}
-      propertyPath: m_BodyType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1743457317931911750, guid: 0bf86adaa5e4a604ca0dc5711b6bc8d4, type: 3}
-      propertyPath: m_GravityScale
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3817225900647234641, guid: 0bf86adaa5e4a604ca0dc5711b6bc8d4, type: 3}
       propertyPath: m_Name
       value: Player
