@@ -8,7 +8,14 @@ public class Entity : MonoBehaviour
     [SerializeField] public Transform vibrationSpawnPoint;
     [SerializeField] public GameObject vibrations;
     [SerializeField] public float vibrationRate;
-    
+
+    [SerializeField] public TypeEnum vibrationType;
+
+    public enum TypeEnum {
+        Active,
+        Sensory,
+        Environmental
+    }
 
     protected bool canVibrate = true;
 
@@ -23,4 +30,5 @@ public class Entity : MonoBehaviour
         yield return new WaitForSeconds(vibrationRate);
         canVibrate = true;
     }
+
 }

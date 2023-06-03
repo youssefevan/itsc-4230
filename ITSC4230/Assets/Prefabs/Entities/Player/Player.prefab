@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 2120920358327193670}
   - component: {fileID: 1743457317931911750}
   - component: {fileID: 3831624296371904675}
+  - component: {fileID: 3055983257975393574}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -162,9 +163,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eda24cb766104974cb3c50b95a107e17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vibrationSpawnPoint: {fileID: 8331518508745094808}
   vibrations: {fileID: 5471446336199261876, guid: e38ebeb433c971142b4cb8aa24d529f4, type: 3}
   vibrationRate: 0.5
-  vibrationSpawnPoint: {fileID: 8331518508745094808}
+  vibrationType: 0
   moveSpeed: 20
 --- !u!50 &1743457317931911750
 Rigidbody2D:
@@ -238,3 +240,38 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.04, y: 0.03}
   m_EdgeRadius: 0
+--- !u!58 &3055983257975393574
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3817225900647234641}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.03}
+  serializedVersion: 2
+  m_Radius: 0.25
