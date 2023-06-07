@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2796798197155904325}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: VibrationsSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49,7 +49,7 @@ GameObject:
   - component: {fileID: 8173528984814839222}
   - component: {fileID: 8937853803940423966}
   - component: {fileID: 1104304411009294059}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sandworm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ Transform:
   m_Children:
   - {fileID: 2796798197155904325}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6797361791368902925
 MonoBehaviour:
@@ -87,7 +87,8 @@ MonoBehaviour:
   vibrationSpawnPoint: {fileID: 2796798197155904325}
   vibrations: {fileID: 8317867787913341385, guid: 05a845ee6b923cd418eef05bc1c1b104, type: 3}
   vibrationRate: 0.5
-  vibrationType: 0
+  vibrationType: 1
+  territory: {fileID: 0}
 --- !u!212 &6568255920983689864
 SpriteRenderer:
   m_ObjectHideFlags: 0

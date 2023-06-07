@@ -7,7 +7,7 @@ public class Entity : MonoBehaviour
 
     [SerializeField] public Transform vibrationSpawnPoint;
     [SerializeField] public GameObject vibrations;
-    [SerializeField] public float vibrationRate;
+    //[SerializeField] public float vibrationRate;
 
     [SerializeField] public TypeEnum vibrationType;
 
@@ -19,7 +19,7 @@ public class Entity : MonoBehaviour
 
     protected bool canVibrate = true;
 
-    public IEnumerator CreateVibrations() {
+    /*public IEnumerator CreateVibrations() {
         canVibrate = false;
         Instantiate(vibrations, vibrationSpawnPoint);
         StartCoroutine(CreateVibrationsHandler());
@@ -29,6 +29,6 @@ public class Entity : MonoBehaviour
     public IEnumerator CreateVibrationsHandler() {
         yield return new WaitForSeconds(vibrationRate);
         canVibrate = true;
-    }
+    }*/
 
 }

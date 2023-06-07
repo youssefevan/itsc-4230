@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Tilemaps;
 
 public class PlayerController : Entity
 {
@@ -9,6 +10,7 @@ public class PlayerController : Entity
     Rigidbody2D rb;
     CircleCollider2D vibrationCircle;
     [SerializeField] private float moveSpeed = 50.0f;
+    [SerializeField] private Tilemap rockTiles;
 
     void Start()
     {
@@ -19,11 +21,21 @@ public class PlayerController : Entity
     private void FixedUpdate() {
         rb.velocity = moveInput.normalized * moveSpeed * Time.fixedDeltaTime;
 
-        if (rb.velocity != Vector2.zero && canVibrate == true) {
-            vibrationCircle.enabled = true;
-            StartCoroutine(CreateVibrations());
+        if (rb.velocity != Vector2.zero) {
+            if (canVibrate == true) {
+                //StartCoroutine(CreateVibrations());
+                vibrationCircle.enabled = true;
+            } else {
+                vibrationCircle.enabled = false;
+            }
         } else {
             vibrationCircle.enabled = false;
+        }
+
+        if (rockTiles.GetTile(rockTiles.WorldToCell(transform.position))) {
+            canVibrate = false;
+        } else {
+            canVibrate = true;
         }
 
     }

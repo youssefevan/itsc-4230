@@ -6,12 +6,14 @@ using Pathfinding;
 
 public class SandwormController : Entity
 {
-    private Rigidbody2D rb;
 
-    GameObject target;
+    [SerializeField] GameObject territory;
+
+    private Rigidbody2D rb;
+    private AIDestinationSetter aiDest;
+    private GameObject target;
+    private float targetDistance;
     //Vector2 directionVector;
-    AIDestinationSetter aiDest;
-    
     //public float moveSpeed;
 
     private void Start() {
@@ -21,11 +23,16 @@ public class SandwormController : Entity
 
     private void FixedUpdate()
     {
-        if (canVibrate == true) {
+        /*if (canVibrate == true) {
             StartCoroutine(CreateVibrations());
-        }
+        }*/
+
 
         aiDest.target = target.transform;
+
+        if ((target != null)) {
+            targetDistance = Vector2.Distance(transform.position, target.transform.position);
+        }
 
         /*if (target != null) {
             directionVector = (target.transform.position - transform.position).normalized;
@@ -47,5 +54,17 @@ public class SandwormController : Entity
             }
         }
     }
+
+    /*private void OnTriggerExit2D(Collider2D other) {
+        if (other == target) {
+            if (targetDistance > .5) {
+                ReturnToTerritory();
+            }
+        }
+    }
+
+    private void ReturnToTerritory() {
+        target = territory;
+    }*/
 
 }
