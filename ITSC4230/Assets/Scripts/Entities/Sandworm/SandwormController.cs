@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
-public class SandwormController : Entity
+public class SandwormController: Entity
 {
 
     [SerializeField] GameObject territory;
@@ -13,12 +13,14 @@ public class SandwormController : Entity
     private AIDestinationSetter aiDest;
     private GameObject target;
     private float targetDistance;
+    StateManager stateManager;
     //Vector2 directionVector;
     //public float moveSpeed;
 
     private void Start() {
         rb = GetComponent<Rigidbody2D>();
         aiDest = GetComponent<AIDestinationSetter>();
+        stateManager = GetComponent<StateManager>();
     }
 
     private void FixedUpdate()

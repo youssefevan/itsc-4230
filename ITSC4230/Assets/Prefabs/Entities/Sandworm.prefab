@@ -41,6 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7486848581902735447}
   - component: {fileID: 6797361791368902925}
+  - component: {fileID: 2231028017206227513}
   - component: {fileID: 6568255920983689864}
   - component: {fileID: 4415232527718779579}
   - component: {fileID: 6970261182493829492}
@@ -86,9 +87,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vibrationSpawnPoint: {fileID: 2796798197155904325}
   vibrations: {fileID: 8317867787913341385, guid: 05a845ee6b923cd418eef05bc1c1b104, type: 3}
-  vibrationRate: 0.5
   vibrationType: 1
   territory: {fileID: 0}
+--- !u!114 &2231028017206227513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7466541016636084587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: def4785fe9903374a9619c9d55a1a7a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &6568255920983689864
 SpriteRenderer:
   m_ObjectHideFlags: 0
