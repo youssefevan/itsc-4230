@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class StateManager : MonoBehaviour
 {
+    public SandwormController swCont;
 
     public BaseState currentState;
     public Idle idle = new Idle();
@@ -14,6 +15,7 @@ public class StateManager : MonoBehaviour
 
     void Start()
     {
+        swCont = GetComponent<SandwormController>();
         currentState = idle;
         currentState.EnterState(this);
     }
