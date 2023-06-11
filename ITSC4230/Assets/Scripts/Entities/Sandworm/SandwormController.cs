@@ -7,15 +7,16 @@ using Pathfinding;
 public class SandwormController: Entity
 {
 
-    [SerializeField] GameObject territory;
+    [SerializeField] public GameObject territory;
 
     private Rigidbody2D rb;
-    private AIDestinationSetter aiDest;
-    private GameObject target;
-    private float targetDistance;
     StateManager stateManager;
-    //Vector2 directionVector;
-    //public float moveSpeed;
+
+    public AIDestinationSetter aiDest;
+    public GameObject target;
+    public Transform lastTargetTransform;
+    public float targetDistance;
+    public float maxEatingDist = 0.1f;
 
     private void Start() {
         rb = GetComponent<Rigidbody2D>();
@@ -23,26 +24,15 @@ public class SandwormController: Entity
         stateManager = GetComponent<StateManager>();
     }
 
-    private void FixedUpdate()
+    public void FixedUpdate()
     {
-        /*if (canVibrate == true) {
-            StartCoroutine(CreateVibrations());
-        }*/
-
-
-        aiDest.target = target.transform;
-
-        if ((target != null)) {
+        if (target != null) {
             targetDistance = Vector2.Distance(transform.position, target.transform.position);
+
+            if (target.GetComponent<Entity>() == true && target.GetComponent<Entity>().canVibrate == false) {
+                target = null;
+            }
         }
-
-        /*if (target != null) {
-            directionVector = (target.transform.position - transform.position).normalized;
-            rb.velocity = directionVector * moveSpeed * Time.fixedDeltaTime;
-        } else {
-            rb.velocity = Vector2.zero;
-        }*/
-
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
@@ -57,16 +47,14 @@ public class SandwormController: Entity
         }
     }
 
-    /*private void OnTriggerExit2D(Collider2D other) {
-        if (other == target) {
-            if (targetDistance > .5) {
-                ReturnToTerritory();
+    private void OnTriggerExit2D(Collider2D other) {
+        if (other is CircleCollider2D) {
+            if (other.gameObject.GetComponent<Entity>() == true) {
+                if (other.gameObject == target) {
+                    target = null;
+                }
             }
         }
+        
     }
-
-    private void ReturnToTerritory() {
-        target = territory;
-    }*/
-
 }

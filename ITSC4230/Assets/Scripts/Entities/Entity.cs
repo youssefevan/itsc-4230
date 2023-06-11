@@ -17,7 +17,7 @@ public class Entity : MonoBehaviour
         Environmental
     }
 
-    protected bool canVibrate = true;
+    public bool canVibrate = true;
 
     /*public IEnumerator CreateVibrations() {
         canVibrate = false;

@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class Eat : BaseState
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    public override void EnterState(StateManager sm) {
+        base.EnterState(sm);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public override void UpdateState(StateManager sm) {
+        base.UpdateState(sm);
+
+        sm.ChangeState(sm.wait);
     }
 }

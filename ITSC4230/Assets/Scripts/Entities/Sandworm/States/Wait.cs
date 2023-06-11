@@ -4,16 +4,29 @@ using UnityEngine;
 
 public class Wait : BaseState
 {
+
+    private int frame = 0;
+    private int waitTimeFrames = 90;
     
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+
+    public override void EnterState(StateManager sm) {
+        base.EnterState(sm);
+        sm.swCont.aiDest.target = sm.swCont.lastTargetTransform;
+        frame = 0;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public override void UpdateState(StateManager sm) {
+        base.EnterState(sm);
+        frame += 1;
+
+        if (sm.swCont.target != null) {
+            sm.ChangeState(sm.chase);
+        }
+
+        if (frame >= waitTimeFrames) {
+            sm.ChangeState(sm.idle);
+        }
+
     }
+    
 }
