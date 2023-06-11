@@ -45,7 +45,6 @@ GameObject:
   - component: {fileID: 2120920358327193670}
   - component: {fileID: 1743457317931911750}
   - component: {fileID: 7944602323238256264}
-  - component: {fileID: 3055983257975393574}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -66,6 +65,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8331518508745094808}
+  - {fileID: 6857635973587935571}
+  - {fileID: 5919879443494306275}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -163,11 +164,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eda24cb766104974cb3c50b95a107e17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vibrationSpawnPoint: {fileID: 8331518508745094808}
-  vibrations: {fileID: 5471446336199261876, guid: e38ebeb433c971142b4cb8aa24d529f4, type: 3}
-  vibrationRate: 0.5
+  vibrationCollider: {fileID: 3017742388558410111}
   vibrationType: 0
+  canVibrate: 1
   moveSpeed: 20
+  rockTiles: {fileID: 0}
+  hurtbox: {fileID: 7432733104123932850}
 --- !u!50 &1743457317931911750
 Rigidbody2D:
   serializedVersion: 4
@@ -230,13 +232,112 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: -0.025}
   m_Size: {x: 0.015, y: 0.015}
   m_Direction: 0
---- !u!58 &3055983257975393574
+--- !u!1 &7315947094889795248
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5919879443494306275}
+  - component: {fileID: 3017742388558410111}
+  m_Layer: 6
+  m_Name: Vibration
+  m_TagString: Vibration
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5919879443494306275
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7315947094889795248}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.02, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3863966295509314350}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &3017742388558410111
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3817225900647234641}
+  m_GameObject: {fileID: 7315947094889795248}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.25
+--- !u!1 &7487058372703967915
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6857635973587935571}
+  - component: {fileID: 7432733104123932850}
+  m_Layer: 6
+  m_Name: Hurtbox
+  m_TagString: Hurtbox
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6857635973587935571
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7487058372703967915}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3863966295509314350}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &7432733104123932850
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7487058372703967915}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -262,6 +363,6 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.03}
+  m_Offset: {x: 0, y: -0.015}
   serializedVersion: 2
-  m_Radius: 0.25
+  m_Radius: 0.015

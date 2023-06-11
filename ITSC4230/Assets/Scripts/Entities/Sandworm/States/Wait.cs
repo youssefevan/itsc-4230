@@ -27,6 +27,10 @@ public class Wait : BaseState
             sm.ChangeState(sm.idle);
         }
 
+        if (sm.swCont.eatTarget != null) {
+            sm.ChangeState(sm.eat);
+        }
+
     }
     
 }

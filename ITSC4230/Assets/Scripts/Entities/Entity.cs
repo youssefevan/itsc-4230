@@ -5,8 +5,8 @@ using UnityEngine;
 public class Entity : MonoBehaviour
 {
 
-    [SerializeField] public Transform vibrationSpawnPoint;
-    [SerializeField] public GameObject vibrations;
+    [SerializeField] public Collider2D vibrationCollider;
+    //[SerializeField] public GameObject vibrations;
     //[SerializeField] public float vibrationRate;
 
     [SerializeField] public TypeEnum vibrationType;
@@ -18,6 +18,10 @@ public class Entity : MonoBehaviour
     }
 
     public bool canVibrate = true;
+
+    public void Die() {
+        Destroy(gameObject);
+    }
 
     /*public IEnumerator CreateVibrations() {
         canVibrate = false;

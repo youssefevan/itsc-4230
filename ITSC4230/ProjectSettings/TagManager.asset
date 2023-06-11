@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Hurtbox
+  - Vibration
+  - Hitbox
   layers:
   - Default
   - TransparentFX
@@ -17,7 +20,7 @@ TagManager:
   - Sand
   - Rock
   - Cliff
-  - 
+  - Hurtbox
   - 
   - 
   - 

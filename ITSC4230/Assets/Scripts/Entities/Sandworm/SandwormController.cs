@@ -17,6 +17,8 @@ public class SandwormController: Entity
     public Transform lastTargetTransform;
     public float targetDistance;
     public float maxEatingDist = 0.1f;
+    [SerializeField] public Collider2D hitbox;
+    public Collider2D eatTarget = null;
 
     private void Start() {
         rb = GetComponent<Rigidbody2D>();
@@ -35,26 +37,36 @@ public class SandwormController: Entity
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
-        if (other is CircleCollider2D) {
+    public void VibrationColliderEnter(Collider2D other) {
+        if (other.tag == "Vibration") {
             // get game object, check vibration type, assign target
-            if (other.gameObject.GetComponent<Entity>() == true) {
-                String detectedVibrationType = other.gameObject.GetComponent<Entity>().vibrationType.ToString();
-                if (detectedVibrationType == "Active") {
-                    target = other.gameObject;
+            String detectedVibrationType = other.gameObject.transform.parent.gameObject.GetComponentInParent<Entity>().vibrationType.ToString();
+            if (detectedVibrationType == "Active") {
+                    target = other.gameObject.transform.parent.gameObject;
+            }
+        }
+    }
+
+    public void VibrationColliderExit(Collider2D other) {
+        if (other.tag == "Vibration") {
+            if (other.gameObject.transform.parent.gameObject.GetComponentInParent<Entity>() == true) {
+                if (other.gameObject.transform.parent.gameObject == target) {
+                    target = null;
                 }
             }
         }
     }
 
-    private void OnTriggerExit2D(Collider2D other) {
-        if (other is CircleCollider2D) {
-            if (other.gameObject.GetComponent<Entity>() == true) {
-                if (other.gameObject == target) {
-                    target = null;
-                }
-            }
+    public void HitboxEnter(Collider2D other) {
+        if (other.tag == "Hurtbox") {
+            eatTarget = other;
         }
-        
     }
+
+    public void HitboxExit(Collider2D other) {
+        if (other.tag == "Hurtbox") {
+            eatTarget = null;
+        }
+    }
+    
 }

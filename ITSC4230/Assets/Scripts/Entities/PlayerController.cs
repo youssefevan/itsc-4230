@@ -8,14 +8,14 @@ public class PlayerController : Entity
 {
     Vector2 moveInput;
     Rigidbody2D rb;
-    CircleCollider2D vibrationCircle;
     [SerializeField] private float moveSpeed = 50.0f;
     [SerializeField] private Tilemap rockTiles;
+    [SerializeField] public Collider2D hurtbox;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        vibrationCircle = GetComponent<CircleCollider2D>();
+        hurtbox.enabled = true;
     }
 
     private void FixedUpdate() {
@@ -24,12 +24,12 @@ public class PlayerController : Entity
         if (rb.velocity != Vector2.zero) {
             if (canVibrate == true) {
                 //StartCoroutine(CreateVibrations());
-                vibrationCircle.enabled = true;
+                vibrationCollider.enabled = true;
             } else {
-                vibrationCircle.enabled = false;
+                vibrationCollider.enabled = false;
             }
         } else {
-            vibrationCircle.enabled = false;
+            vibrationCollider.enabled = false;
         }
 
         if (rockTiles.GetTile(rockTiles.WorldToCell(transform.position))) {

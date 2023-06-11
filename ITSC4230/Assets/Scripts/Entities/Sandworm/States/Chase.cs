@@ -15,13 +15,11 @@ public class Chase : BaseState
         if (sm.swCont.target != null) {
             sm.swCont.aiDest.target = sm.swCont.target.transform;
             sm.swCont.lastTargetTransform = sm.swCont.target.transform;
-        }
-        
-        if (sm.swCont.target == null) {
+        } else {
             sm.ChangeState(sm.wait);
         }
 
-        if (sm.swCont.targetDistance <= sm.swCont.maxEatingDist) {
+        if (sm.swCont.eatTarget != null) {
             sm.ChangeState(sm.eat);
         }
     }
