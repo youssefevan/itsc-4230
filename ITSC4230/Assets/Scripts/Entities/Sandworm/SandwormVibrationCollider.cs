@@ -11,6 +11,10 @@ public class SandwormVibrationCollider : MonoBehaviour
         parent.GetComponent<SandwormController>().VibrationColliderEnter(other);
     }
 
+    private void OnTriggerStay2D(Collider2D other) {
+        parent.GetComponent<SandwormController>().VibrationColliderStay(other);
+    }
+
     private void OnTriggerExit2D(Collider2D other) {
         parent.GetComponent<SandwormController>().VibrationColliderExit(other);
     }

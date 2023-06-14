@@ -5,7 +5,7 @@ using UnityEngine;
 public class BaseState
 {
     public virtual void EnterState(StateManager sm){
-        Debug.Log(sm.currentState);
+        //Debug.Log(sm.currentState);
     }
     
     public virtual void UpdateState(StateManager sm){}

@@ -16,7 +16,6 @@ public class SandwormController: Entity
     public GameObject target;
     public Transform lastTargetTransform;
     public float targetDistance;
-    public float maxEatingDist = 0.1f;
     [SerializeField] public Collider2D hitbox;
     public Collider2D eatTarget = null;
 
@@ -38,11 +37,21 @@ public class SandwormController: Entity
     }
 
     public void VibrationColliderEnter(Collider2D other) {
+        /*if (other.tag == "Vibration") {
+            // get game object, check vibration type, assign target
+            String detectedVibrationType = other.gameObject.transform.parent.gameObject.GetComponentInParent<Entity>().vibrationType.ToString();
+            if (detectedVibrationType == "Active") {
+                target = other.gameObject.transform.parent.gameObject;
+            }
+        }*/
+    }
+
+    public void VibrationColliderStay(Collider2D other) {
         if (other.tag == "Vibration") {
             // get game object, check vibration type, assign target
             String detectedVibrationType = other.gameObject.transform.parent.gameObject.GetComponentInParent<Entity>().vibrationType.ToString();
             if (detectedVibrationType == "Active") {
-                    target = other.gameObject.transform.parent.gameObject;
+                target = other.gameObject.transform.parent.gameObject;
             }
         }
     }

@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
@@ -12,10 +11,13 @@ public class PlayerController : Entity
     [SerializeField] private Tilemap rockTiles;
     [SerializeField] public Collider2D hurtbox;
 
+    public int collectedParts = 0;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         hurtbox.enabled = true;
+        collectedParts = 0;
     }
 
     private void FixedUpdate() {
@@ -37,11 +39,16 @@ public class PlayerController : Entity
         } else {
             canVibrate = true;
         }
-
     }
 
     private void OnMove(InputValue inputValue) {
         moveInput = inputValue.Get<Vector2>();
+    }
+
+    public void Pickup(GameObject item) {
+        collectedParts += 1;
+        Debug.Log("Parts collected: " + collectedParts);
+        Destroy(item);
     }
 
 }
