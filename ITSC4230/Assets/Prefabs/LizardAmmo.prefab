@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5264080018599814396}
   - component: {fileID: 7196443654345614200}
   m_Layer: 0
-  m_Name: ShipPart
+  m_Name: LizardAmmo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7577122501093395248
 SpriteRenderer:

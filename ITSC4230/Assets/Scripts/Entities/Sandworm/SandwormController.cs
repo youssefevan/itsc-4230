@@ -18,11 +18,14 @@ public class SandwormController: Entity
     public float targetDistance;
     [SerializeField] public Collider2D hitbox;
     public Collider2D eatTarget = null;
+    public bool foundFood = false;
 
     private void Start() {
         rb = GetComponent<Rigidbody2D>();
         aiDest = GetComponent<AIDestinationSetter>();
         stateManager = GetComponent<StateManager>();
+        gameObject.transform.position = territory.transform.position;
+        foundFood = false;
     }
 
     public void FixedUpdate()
@@ -67,15 +70,15 @@ public class SandwormController: Entity
     }
 
     public void HitboxEnter(Collider2D other) {
-        if (other.tag == "Hurtbox") {
-            eatTarget = other;
+        if (other.gameObject.tag == "Hurtbox") {
+            foundFood = true;
         }
     }
 
     public void HitboxExit(Collider2D other) {
-        if (other.tag == "Hurtbox") {
-            eatTarget = null;
-        }
+        /*if (other.tag == "Hurtbox") {
+            foundFood = false;
+        }*/
     }
     
 }

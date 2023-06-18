@@ -11,8 +11,8 @@ public class Eat : BaseState
     public override void EnterState(StateManager sm) {
         base.EnterState(sm);
         frame = 0;
-        
-        sm.swCont.eatTarget.gameObject.GetComponentInParent<Entity>().Die();
+        sm.swCont.foundFood = false;
+        //sm.swCont.eatTarget.gameObject.GetComponentInParent<Entity>().Die();
     }
 
     public override void UpdateState(StateManager sm) {

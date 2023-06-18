@@ -19,7 +19,7 @@ public class Chase : BaseState
             sm.ChangeState(sm.wait);
         }
 
-        if (sm.swCont.eatTarget != null) {
+        if (sm.swCont.foundFood == true) {
             sm.ChangeState(sm.eat);
         }
     }

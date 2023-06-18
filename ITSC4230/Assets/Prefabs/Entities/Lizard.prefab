@@ -105,8 +105,8 @@ MonoBehaviour:
   vibrationType: 0
   canVibrate: 1
   rockTiles: {fileID: 0}
-  hurtbox: {fileID: 0}
-  moveSpeed: 18
+  hurtbox: {fileID: 4700063199948951708}
+  cam: {fileID: 0}
 --- !u!50 &2658198946747318523
 Rigidbody2D:
   serializedVersion: 4
@@ -120,7 +120,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -246,6 +246,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6497539356168958913}
   - component: {fileID: 4700063199948951708}
+  - component: {fileID: 1383451305711827191}
   m_Layer: 13
   m_Name: Hurtbox
   m_TagString: Hurtbox
@@ -303,3 +304,16 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.01}
   serializedVersion: 2
   m_Radius: 0.02
+--- !u!114 &1383451305711827191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6580965704656466113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 100bf4d084c5f0e449c3435302b14441, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parent: {fileID: 3943496176346818328}

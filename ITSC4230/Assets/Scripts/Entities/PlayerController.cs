@@ -8,16 +8,16 @@ public class PlayerController : Entity
     Vector2 moveInput;
     Rigidbody2D rb;
     [SerializeField] private float moveSpeed = 50.0f;
-    [SerializeField] private Tilemap rockTiles;
+    [SerializeField] public Tilemap rockTiles;
     [SerializeField] public Collider2D hurtbox;
 
-    public int collectedParts = 0;
+    public int lizardAmmo = 0;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         hurtbox.enabled = true;
-        collectedParts = 0;
+        lizardAmmo = 0;
     }
 
     private void FixedUpdate() {
@@ -46,8 +46,8 @@ public class PlayerController : Entity
     }
 
     public void Pickup(GameObject item) {
-        collectedParts += 1;
-        Debug.Log("Parts collected: " + collectedParts);
+        lizardAmmo += 1;
+        Debug.Log("Ammo: " + lizardAmmo);
         Destroy(item);
     }
 

@@ -6,7 +6,7 @@ public class Ship : MonoBehaviour
 {
     [SerializeField] private int neededParts = 3;
 
-    private void OnTriggerEnter2D(Collider2D other) {
+    /*private void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.tag == "Hurtbox") {
             var player = other.gameObject.GetComponentInParent<PlayerController>();
             if (player) {
@@ -17,5 +17,5 @@ public class Ship : MonoBehaviour
                 }
             }
         }
-    }
+    }*/
 }

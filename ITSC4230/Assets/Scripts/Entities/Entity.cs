@@ -19,6 +19,12 @@ public class Entity : MonoBehaviour
 
     public bool canVibrate = true;
 
+    public void HurtboxEnter(Collider2D other) {
+        if (other.GetComponentInParent<SandwormHitbox>()) {
+            Die();
+        }
+    }
+
     public void Die() {
         Destroy(gameObject);
     }
