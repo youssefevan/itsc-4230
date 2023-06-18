@@ -19,6 +19,7 @@ public class SandwormController: Entity
     [SerializeField] public Collider2D hitbox;
     public Collider2D eatTarget = null;
     public bool foundFood = false;
+    public bool captured = false;
 
     private void Start() {
         rb = GetComponent<Rigidbody2D>();
@@ -26,6 +27,7 @@ public class SandwormController: Entity
         stateManager = GetComponent<StateManager>();
         gameObject.transform.position = territory.transform.position;
         foundFood = false;
+        captured = false;
     }
 
     public void FixedUpdate()
@@ -72,6 +74,9 @@ public class SandwormController: Entity
     public void HitboxEnter(Collider2D other) {
         if (other.gameObject.tag == "Hurtbox") {
             foundFood = true;
+        } else if (other.gameObject.GetComponentInParent<Pen>()) {
+            captured = true;
+            territory = other.gameObject;
         }
     }
 

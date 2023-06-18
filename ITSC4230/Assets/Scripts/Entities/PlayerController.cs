@@ -21,11 +21,14 @@ public class PlayerController : Entity
     }
 
     private void FixedUpdate() {
+        // Moves player based on input
         rb.velocity = moveInput.normalized * moveSpeed * Time.fixedDeltaTime;
 
+        // Enables the vibration collider when moving.
+        // This allows the sandworms to detect the player.
         if (rb.velocity != Vector2.zero) {
+            // Makes sure the player is allowed to make vibrations
             if (canVibrate == true) {
-                //StartCoroutine(CreateVibrations());
                 vibrationCollider.enabled = true;
             } else {
                 vibrationCollider.enabled = false;
@@ -34,6 +37,8 @@ public class PlayerController : Entity
             vibrationCollider.enabled = false;
         }
 
+        // Disables the player's ability to create vibrations based on
+        // whether the player is on safe tiles.
         if (rockTiles.GetTile(rockTiles.WorldToCell(transform.position))) {
             canVibrate = false;
         } else {
@@ -41,10 +46,12 @@ public class PlayerController : Entity
         }
     }
 
+    // Movement input
     private void OnMove(InputValue inputValue) {
         moveInput = inputValue.Get<Vector2>();
     }
 
+    // Ammo system (unused)
     public void Pickup(GameObject item) {
         lizardAmmo += 1;
         Debug.Log("Ammo: " + lizardAmmo);

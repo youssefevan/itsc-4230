@@ -21,13 +21,12 @@ public class Lizard : Entity
 
     void Start() {
         rb = GetComponent<Rigidbody2D>();
-        mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
-        Vector3 dir = mousePos - transform.position;
-        Vector3 rotation = transform.position - mousePos;
-        
-        //float rot = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
-        //transform.rotation = Quaternion.Euler(0, 0, rot + 90);
+        mousePos = cam.ScreenToWorldPoint(Input.mousePosition); // mouse position relative to camera
 
+        // Calculates the direction of the mouse cursor in relation to the lizard
+        Vector3 dir = mousePos - transform.position;
+
+        // Launches the lizards in the calculated direction
         rb.AddForce(new Vector2(dir.x, dir.y).normalized * moveSpeed);
     }
 
@@ -36,14 +35,23 @@ public class Lizard : Entity
     }
 
     void FixedUpdate() {
+        //Debug.Log(rb.velocity.magnitude);
 
+        // Checks if the lizard is on rock tiles (aka safe tiles)
+        // and adjusts vibrations accordingly.
         if (rockTiles.GetTile(rockTiles.WorldToCell(transform.position))) {
             canVibrate = false;
         } else {
-            canVibrate = true;
+            if (rb.velocity.magnitude > 0.075){ // if moving enough
+                canVibrate = true;
+            } else {
+                canVibrate = false;
+            }
         }
     }
 
+    // Detects collisions with walls and bounces based on the latest
+    // velocity and the normal of thw wall.
     private void OnCollisionEnter2D(Collision2D other) {
         currentSpeed = lastVelocity.magnitude;
         direction = Vector3.Reflect(lastVelocity.normalized, other.contacts[0].normal);
