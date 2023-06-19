@@ -177,6 +177,8 @@ MonoBehaviour:
   targetDistance: 0
   hitbox: {fileID: 1722656872506662275}
   eatTarget: {fileID: 0}
+  foundFood: 0
+  captured: 0
 --- !u!114 &2231028017206227513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -394,7 +396,7 @@ MonoBehaviour:
     maximumInterval: 2
     visualizeSensitivity: 0
   canMove: 1
-  speed: 0.5
+  speed: 0.55
   orientation: 1
   enableRotation: 1
   rotationSpeed: 10
