@@ -13,6 +13,6 @@ public class SandwormHitbox : MonoBehaviour
     }
 
     private void OnTriggerExit2D(Collider2D other) {
-        parent.GetComponent<SandwormController>().HitboxExit(other);
+        //parent.GetComponent<SandwormController>().HitboxExit(other);
     }
 }

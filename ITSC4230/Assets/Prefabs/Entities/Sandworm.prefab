@@ -169,6 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vibrationCollider: {fileID: 3394946199198623581}
   vibrationType: 1
+  deathParticles: {fileID: 7790675650714851092, guid: 35fdb898eb47cea4b924b16d4e2244db, type: 3}
   canVibrate: 1
   territory: {fileID: 0}
   aiDest: {fileID: 0}
@@ -179,6 +180,8 @@ MonoBehaviour:
   eatTarget: {fileID: 0}
   foundFood: 0
   captured: 0
+  bodySegment: {fileID: 4339314928980580717, guid: a1c206f298902d640865498267afdd58, type: 3}
+  burrowParticles: {fileID: 2922747137090699088, guid: 5edd6571c2763214581952f279f507d0, type: 3}
 --- !u!114 &2231028017206227513
 MonoBehaviour:
   m_ObjectHideFlags: 0

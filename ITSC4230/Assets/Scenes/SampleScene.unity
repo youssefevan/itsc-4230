@@ -340,7 +340,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 602473287}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.201, y: 0.892, z: 0}
+  m_LocalPosition: {x: -1.459, y: 0.571, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -900,6 +900,10 @@ PrefabInstance:
       propertyPath: rockTiles
       value: 
       objectReference: {fileID: 2068416067}
+    - target: {fileID: 2120920358327193670, guid: 0bf86adaa5e4a604ca0dc5711b6bc8d4, type: 3}
+      propertyPath: deathParticles
+      value: 
+      objectReference: {fileID: 7790675650714851092, guid: 35fdb898eb47cea4b924b16d4e2244db, type: 3}
     - target: {fileID: 3817225900647234641, guid: 0bf86adaa5e4a604ca0dc5711b6bc8d4, type: 3}
       propertyPath: m_Name
       value: Player

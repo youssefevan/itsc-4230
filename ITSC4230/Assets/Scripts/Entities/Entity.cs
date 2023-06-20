@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Entity : MonoBehaviour
+public class Entity : MonoBehaviour // Base class for Player, Sandworms, and Lizards
 {
 
     [SerializeField] public Collider2D vibrationCollider;
@@ -10,22 +10,26 @@ public class Entity : MonoBehaviour
     //[SerializeField] public float vibrationRate;
 
     [SerializeField] public TypeEnum vibrationType;
+    [SerializeField] GameObject deathParticles;
 
     public enum TypeEnum {
         Active,
         Sensory,
-        Environmental
+        Environmental // unused
     }
 
     public bool canVibrate = true;
 
+    // Die when colliding with sandworm hitbox
     public void HurtboxEnter(Collider2D other) {
         if (other.GetComponentInParent<SandwormHitbox>()) {
             Die();
         }
     }
 
+    // Create particles, play sound, destroy object
     public void Die() {
+        Instantiate(deathParticles, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
         Destroy(gameObject);
     }
 

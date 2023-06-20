@@ -10,13 +10,15 @@ public class Patrol : BaseState // *Captured* state
 
     public override void EnterState(StateManager sm) {
         base.EnterState(sm);
-        frame = 0; // Reset time
+        sm.swCont.Burrow();
 
-        // In the worm controller, the territoy will be set to the trasform of the pen
-        sm.swCont.target = sm.swCont.territory;
+        frame = 0; // Reset time
 
         // Disable the worm's vibration detection
         sm.swCont.vibrationCollider.enabled = false;
+
+        // In the worm controller, the territoy will be set to the trasform of the pen
+        sm.swCont.target = sm.swCont.territory;
     }
 
     public override void UpdateState(StateManager sm) {

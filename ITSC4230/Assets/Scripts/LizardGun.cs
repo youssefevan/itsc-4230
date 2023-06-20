@@ -8,10 +8,11 @@ public class LizardGun : MonoBehaviour
     [SerializeField] GameObject lizardPrefab;
     [SerializeField] GameObject spriteObject;
     [SerializeField] Transform muzzle;
+    [SerializeField] GameObject cooldownUI;
     Vector3 mousePos;
     bool canFire;
     float timer;
-    float firerate = 1.5f;
+    float firerate = 1f;
 
     void Start()
     {
@@ -44,11 +45,17 @@ public class LizardGun : MonoBehaviour
 
         // Limits shooting intervals by using a frame-counting timer
         if (canFire == false) {
+            cooldownUI.SetActive(true); // Activates the cooldown ui
+
             timer += Time.deltaTime;
             if(timer > firerate) {
                 canFire = true;
                 timer = 0;
             }
+        } else {
+            // deactivates cooldown ui, resets the bar size
+            cooldownUI.SetActive(false);
+            cooldownUI.GetComponent<CooldownUI>().ResetBar();
         }
 
         // Checks for input and ability to fire,

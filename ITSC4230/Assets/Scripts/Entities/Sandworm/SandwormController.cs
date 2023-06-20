@@ -20,6 +20,13 @@ public class SandwormController: Entity
     public Collider2D eatTarget = null;
     public bool foundFood = false;
     public bool captured = false;
+    [SerializeField] GameObject bodySegment;
+    int wormLength = 8; // Number of body segments
+    [SerializeField] public GameObject burrowParticles;
+
+    List<GameObject> wormSegments = new List<GameObject>();
+    List<Vector3> positionHistory = new List<Vector3>();
+    int offset = 4;
 
     private void Start() {
         rb = GetComponent<Rigidbody2D>();
@@ -28,6 +35,7 @@ public class SandwormController: Entity
         gameObject.transform.position = territory.transform.position;
         foundFood = false;
         captured = false;
+        AddSegments();
     }
 
     public void FixedUpdate()
@@ -38,6 +46,27 @@ public class SandwormController: Entity
             if (target.GetComponent<Entity>() == true && target.GetComponent<Entity>().canVibrate == false) {
                 target = null;
             }
+        }
+
+        positionHistory.Insert(0, transform.position);
+
+        int index = 0;
+        foreach (var segment in wormSegments) {
+            Vector3 point = positionHistory[Mathf.Min(index * offset, positionHistory.Count - 1)];
+            segment.transform.position = point;
+            index++;
+        }
+    }
+
+    public void Burrow() {
+        Instantiate(burrowParticles, gameObject.transform);
+    }
+
+    void AddSegments() {
+        for (int i = 0; i < wormLength; i++) {
+            // Create instance of the body segment, add segment to list
+            GameObject segment = Instantiate(bodySegment);
+            wormSegments.Add(segment); 
         }
     }
 
@@ -80,10 +109,11 @@ public class SandwormController: Entity
         }
     }
 
-    public void HitboxExit(Collider2D other) {
-        /*if (other.tag == "Hurtbox") {
-            foundFood = false;
-        }*/
+    public void Die() {
+        for (int i = 0; i < wormSegments.Count; i++) {
+            Destroy(wormSegments[i].gameObject);
+        }
+        base.Die();
     }
     
 }
