@@ -13,16 +13,20 @@ public class LizardGun : MonoBehaviour
     bool canFire;
     float timer;
     float firerate = 1f;
+    [SerializeField] AudioClip shootSFX;
+
+    GameObject soundManager;
 
     void Start()
     {
         canFire = true;
-
-        // Sets safe tiles and camera variables in the lizard prefab to the
+        soundManager = GetComponentInParent<PlayerController>().soundManager;
+        // Sets safe tiles, camera, and sound manager variables in the lizard prefab to the
         // respective values assigned to the player. This allows for the lizards
         // to have contextually correct references without being set in the inspector.
         lizardPrefab.GetComponent<Lizard>().rockTiles = GetComponentInParent<PlayerController>().rockTiles;
         lizardPrefab.GetComponent<Lizard>().cam = this.cam;
+        lizardPrefab.GetComponent<Lizard>().soundManager = GetComponentInParent<PlayerController>().soundManager;
     }
 
     void Update()
@@ -62,6 +66,7 @@ public class LizardGun : MonoBehaviour
         // spawns an instance of the lizard prefab at the pos of the muzzle
         if (Input.GetButtonDown("Fire1") && canFire) {
             Instantiate(lizardPrefab, muzzle.position, Quaternion.identity);
+            soundManager.GetComponent<SoundManager>().PlaySound(shootSFX);
             canFire = false;
         }
 

@@ -12,6 +12,9 @@ public class Entity : MonoBehaviour // Base class for Player, Sandworms, and Liz
     [SerializeField] public TypeEnum vibrationType;
     [SerializeField] GameObject deathParticles;
 
+    [SerializeField] public GameObject soundManager;
+    [SerializeField] public AudioClip deathSFX;
+
     public enum TypeEnum {
         Active,
         Sensory,
@@ -30,6 +33,7 @@ public class Entity : MonoBehaviour // Base class for Player, Sandworms, and Liz
     // Create particles, play sound, destroy object
     public void Die() {
         Instantiate(deathParticles, new Vector2(transform.position.x, transform.position.y), Quaternion.identity);
+        soundManager.GetComponent<SoundManager>().PlaySound(deathSFX);
         Destroy(gameObject);
     }
 

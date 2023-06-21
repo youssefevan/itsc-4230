@@ -24,10 +24,8 @@ public class PlayerController : Entity
         // Moves player based on input
         rb.velocity = moveInput.normalized * moveSpeed * Time.fixedDeltaTime;
 
-        // Enables the vibration collider when moving.
-        // This allows the sandworms to detect the player.
+        // Enables the vibration collider when moving on sand
         if (rb.velocity != Vector2.zero) {
-            // Makes sure the player is allowed to make vibrations
             if (canVibrate == true) {
                 vibrationCollider.enabled = true;
             } else {

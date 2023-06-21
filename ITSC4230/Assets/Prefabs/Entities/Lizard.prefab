@@ -104,6 +104,8 @@ MonoBehaviour:
   vibrationCollider: {fileID: 8859149435463451021}
   vibrationType: 0
   deathParticles: {fileID: 7790675650714851092, guid: 35fdb898eb47cea4b924b16d4e2244db, type: 3}
+  soundManager: {fileID: 0}
+  deathSFX: {fileID: 8300000, guid: ccfd4026f2151724cb00a0233b344f99, type: 3}
   canVibrate: 1
   rockTiles: {fileID: 0}
   hurtbox: {fileID: 4700063199948951708}

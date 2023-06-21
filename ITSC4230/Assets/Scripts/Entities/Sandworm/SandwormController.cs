@@ -23,6 +23,7 @@ public class SandwormController: Entity
     [SerializeField] GameObject bodySegment;
     int wormLength = 8; // Number of body segments
     [SerializeField] public GameObject burrowParticles;
+    [SerializeField] AudioClip burrowSFX;
 
     List<GameObject> wormSegments = new List<GameObject>();
     List<Vector3> positionHistory = new List<Vector3>();
@@ -60,6 +61,7 @@ public class SandwormController: Entity
 
     public void Burrow() {
         Instantiate(burrowParticles, gameObject.transform);
+        soundManager.GetComponent<SoundManager>().PlaySound(burrowSFX);
     }
 
     void AddSegments() {
