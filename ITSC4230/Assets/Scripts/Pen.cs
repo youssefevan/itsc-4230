@@ -6,6 +6,7 @@ public class Pen : MonoBehaviour
 {
     public int sandwormCount; // Amount currently captured
     [SerializeField] public int sandwormsToCapture; // Amount needed to beat level
+    [SerializeField] GameObject navUI;
 
     private void Start() {
         // Reset sandworms collected
@@ -17,11 +18,10 @@ public class Pen : MonoBehaviour
         if (other.gameObject.tag == "Hitbox" && other.gameObject.GetComponentInParent<SandwormController>()) {
             // Add a sandworm
             sandwormCount += 1;
-            Debug.Log("Sandworms captured: " + sandwormCount);
 
             // Check if all sandworms are captured
             if (sandwormCount == sandwormsToCapture) {
-                Debug.Log("All sandworms captured");
+                navUI.GetComponent<NavigationUI>().LevelComplete();
             }
         }
     }

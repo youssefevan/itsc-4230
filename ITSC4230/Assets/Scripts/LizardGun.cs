@@ -15,6 +15,10 @@ public class LizardGun : MonoBehaviour
     float firerate = 1f;
     [SerializeField] AudioClip shootSFX;
 
+    bool vibrationBuffer = false;
+    int vibrationBufferFrames = 20;
+    int frame = 100;
+
     GameObject soundManager;
 
     void Start()
@@ -27,6 +31,25 @@ public class LizardGun : MonoBehaviour
         lizardPrefab.GetComponent<Lizard>().rockTiles = GetComponentInParent<PlayerController>().rockTiles;
         lizardPrefab.GetComponent<Lizard>().cam = this.cam;
         lizardPrefab.GetComponent<Lizard>().soundManager = GetComponentInParent<PlayerController>().soundManager;
+    }
+
+    void FixedUpdate() {
+        // This creates a 20-frame buffer after shooting where the player
+        // can move without being detected. This provides some leeway to the player
+
+        if (vibrationBuffer == true) { // True on shoot
+            frame += 1; // counts frames
+            GetComponentInParent<PlayerController>().canVibrate = false; // disables vibrations
+
+            if (frame == vibrationBufferFrames) { // checks if 20 frames have passed
+                // disables buffer, allowing player controller to dictate vibrations
+                vibrationBuffer = false;
+            }
+            
+        } else {
+            frame = 100;
+        }
+        
     }
 
     void Update()
@@ -68,6 +91,10 @@ public class LizardGun : MonoBehaviour
             Instantiate(lizardPrefab, muzzle.position, Quaternion.identity);
             soundManager.GetComponent<SoundManager>().PlaySound(shootSFX);
             canFire = false;
+
+            // Setup for buffer
+            vibrationBuffer = true;
+            frame = 0;
         }
 
     }
