@@ -12,7 +12,9 @@ public class Idle : BaseState
     public override void UpdateState(StateManager sm) {
         base.UpdateState(sm);
         
-        sm.swCont.aiDest.target = sm.swCont.target.transform;
+        if (sm.swCont.target) {
+            sm.swCont.aiDest.target = sm.swCont.target.transform;
+        }
         
         if (sm.swCont.target != sm.swCont.territory) {
             sm.ChangeState(sm.chase);
